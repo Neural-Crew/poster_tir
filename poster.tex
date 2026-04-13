@@ -1,0 +1,172 @@
+% Unofficial University of Lethbridge Poster template.
+% A fork of unofficial University of Alberta Poster template: 
+% which is a fork of Yale template: https://www.overleaf.com/latex/templates/yale-poster-template/rjpgqfgvsjcv
+% which is a fork of the UMich template https://www.overleaf.com/latex/templates/university-of-michigan-umich-poster-template/xpnqzzxwbjzc
+% which is fork of the MSU template https://www.overleaf.com/latex/templates/an-unofficial-poster-template-for-michigan-state-university/wnymbgpxnnwd
+% which is a fork of https://www.overleaf.com/latex/templates/an-unofficial-poster-template-for-new-york-university/krgqtqmzdqhg
+% which is a fork of https://github.com/anishathalye/gemini
+% also refer to https://github.com/k4rtik/uchicago-poster
+
+
+
+\documentclass[final]{beamer}
+
+% ====================
+% Packages
+% ====================
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[size=custom, width=122,height=91, scale=1.2]{beamerposter}
+\usetheme{gemini}
+\usecolortheme{msu}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{anyfontsize}
+
+% ====================
+% Lengths
+% ====================
+
+% If you have N columns, choose \sepwidth and \colwidth such that
+% (N+1)*\sepwidth + N*\colwidth = \paperwidth
+\newlength{\sepwidth}
+\newlength{\colwidth}
+\setlength{\sepwidth}{0.025\paperwidth}
+\setlength{\colwidth}{0.3\paperwidth}
+
+\newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
+
+% ====================
+% Title
+% ====================
+
+\title{État de l'art des Small Language Models inférieurs à 14 milliards de paramètres}
+
+\author{Your Name}
+
+\institute[shortinst]{Universitée de Toulouse}
+
+% ====================
+% Footer (optional)
+% ====================
+
+\footercontent{
+  \href{https://github.com}{Github: https://github.com} \hfill
+Poster Session \hfill
+  \href{mailto:youremail@ualberta.ca}{youremail@uleth.ca}}
+% (can be left out to remove footer)
+
+% ====================
+% Logo (optional)
+% ====================
+
+% use this to include logos on the left and/or right side of the header:
+% Left: institution
+ \logoright{\includegraphics[angle=-90, width=22cm]{logos/logo_toulouse_rose.png}}
+% Right: funding agencies and other affilations 
+%\logoright{\includegraphics[height=7cm]{logos/NSF.eps}}
+% ====================
+% Body
+% ====================
+
+\begin{document}
+
+
+
+\begin{frame}[t]
+\begin{columns}[t]
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{Introduction}
+    Les \textbf{Small Language Models (SLMs)}, définis ici comme des modèles de langage possédant moins de 14 milliards de paramètres, représentent une évolution majeure dans le domaine de l'IA générative. 
+    Contrairement à leurs homologues massifs (LLMs), ils offrent un compromis idéal entre \textbf{performances de haut niveau} et \textbf{faible coût computationnel}.
+    
+    Ce poster synthétise l'état de l'art actuel de ces modèles, leurs capacités sur différents benchmarks, et leurs cas d'usage émergents.
+  \end{block}
+
+  \begin{block}{Tendances Actuelles}
+    L'écosystème des SLMs se concentre sur plusieurs axes d'optimisation :
+    \begin{itemize}
+      \item \textbf{Données d'entraînement :} Utilisation de corpus hautement qualitatifs (ex: Phi-3 entraîné sur des données textuelles de qualité \textit{textbook}).
+      \item \textbf{Quantization :} Réduction de la précision des poids (4-bit, 8-bit) pour permettre l'exécution sur du matériel grand public.
+      \item \textbf{Spécialisation :} Création de modèles experts sur des tâches précises (code, mathématiques, résumé) plutôt que généralistes.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Modèles Phares}
+    Plusieurs familles de modèles dominent actuellement cette catégorie :
+    \begin{enumerate}
+      \item \textbf{Qwen (Alibaba) :} Excellentes performances globales, avec des versions de 0.5B à 14B.
+      \item \textbf{Llama 3 (Meta) :} Le modèle 8B s'impose comme un standard de l'industrie pour sa polyvalence.
+      \item \textbf{Gemma (Google) :} Modèles de 2B et 7B basés sur la technologie Gemini, très performants en raisonnement.
+      \item \textbf{Phi-3 (Microsoft) :} Modèles de 3.8B et 7B optimisés pour le raisonnement logique et mathématique.
+    \end{enumerate}
+  \end{block}
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{Performances Comparées}
+    Le graphique ci-dessous illustre les scores détaillés obtenus par différents modèles sur un ensemble de benchmarks standards.
+    
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.95\textwidth]{figures/diag_bench_models.png}
+      \caption{Scores détaillés par benchmark pour les principaux modèles $\le$ 14B paramètres.}
+    \end{figure}
+  \end{block}
+  
+  \begin{block}{Défis Restants}
+    Malgré leurs succès, les SLMs font face à plusieurs limitations :
+    \begin{itemize}
+      \item \textbf{Connaissances factuelles limitées :} La faible capacité de mémorisation réduit l'étendue de leurs connaissances encyclopédiques.
+      \item \textbf{Hallucinations :} Tendance persistante à générer des informations incorrectes sur des requêtes complexes.
+      \item \textbf{Raisonnement multi-sauts :} Difficultés à maintenir la cohérence sur des tâches nécessitant de nombreuses étapes de déduction.
+    \end{itemize}
+  \end{block}
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{exampleblock}{IA Embarquée et Edge Computing}
+    L'un des principaux atouts des SLMs est leur capacité à fonctionner localement, sur des appareils aux ressources limitées (smartphones, PC portables, IoT).
+    
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.9\textwidth]{figures/3D_representation.png}
+      \caption{Représentation 3D des modèles SLM actuels.}
+    \end{figure}
+    
+    L'exécution locale garantit la \textbf{confidentialité des données}, réduit la latence, et permet un fonctionnement hors-ligne (Edge AI). L'utilisation de \textit{Retrieval-Augmented Generation (RAG)} permet de pallier leur manque de connaissances en les connectant à des bases de données locales sécurisées.
+  \end{exampleblock}
+
+  \begin{alertblock}{Conclusion}
+    Les SLMs de moins de 14 milliards de paramètres ne sont plus de simples démonstrateurs technologiques. Ils s'imposent comme des \textbf{solutions viables, économiques et privées} pour l'intégration de l'IA générative en entreprise.
+    
+    L'innovation se porte désormais sur l'amélioration des algorithmes d'entraînement et la distillation des connaissances depuis des LLMs plus massifs vers ces architectures compactes.
+  \end{alertblock}
+
+  \begin{block}{Références}
+    \nocite{*}
+    \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
+  \end{block}
+
+\end{column}
+
+\separatorcolumn
+\end{columns}
+\end{frame}
+
+\end{document}
