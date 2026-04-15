@@ -1,14 +1,15 @@
 # Fdb version 4
-["bibtex poster"] 1776247078.07909 "poster.aux" "poster.bbl" "poster" 1776255033.26429 2
-  "./poster.bib" 1776184142.25009 235 6d9f7970dd54b7263028c7c9348909f0 ""
+["bibtex poster"] 1776270134.65685 "poster.aux" "poster.bbl" "poster" 1776270134.7579 2
+  "./poster.bib" 1776270000.09388 70695 941994a9fdd6e4bcf0656a5633468c95 ""
   "/usr/local/texlive/2026/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "poster.aux" 1776255031.88056 621 993b98a2858f11c5fab3a279008ae583 "pdflatex"
+  "poster.aux" 1776270126.65267 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "references_finales.bib" 0 -1 0 ""
   (generated)
   "poster.bbl"
   "poster.blg"
   (rewritten before read)
-["pdflatex"] 1776255030.72945 "/Users/jimenezalfonso/Documents/Paul_SabatierIII/2eme_Semestre/TIR/poster_tir/poster.tex" "poster.pdf" "poster" 1776255033.2645 2
-  "/Users/jimenezalfonso/Documents/Paul_SabatierIII/2eme_Semestre/TIR/poster_tir/poster.tex" 1776255033.08893 7503 ee0ee3f52c37067df7c3a88b4b281356 ""
+["pdflatex"] 1776270132.217 "/Users/jimenezalfonso/Documents/Paul_SabatierIII/2eme_Semestre/TIR/poster_tir/poster.tex" "poster.pdf" "poster" 1776270134.54909 2
+  "/Users/jimenezalfonso/Documents/Paul_SabatierIII/2eme_Semestre/TIR/poster_tir/poster.tex" 1776270131.98528 7721 ecddada175a05f966641c06bdae9df18 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -541,11 +542,11 @@
   "figures/diag_bench_models.png" 1776184142.24777 43382 7fb1371b8049afc0ade97ca10e9ed079 ""
   "figures/results_fig.pdf" 1776184142.24819 53428 ef6735d56cdc87932041add39bba46e8 ""
   "logos/logo_toulouse_rose.png" 1776184142.2498 208569 7f5f7424c4209f3abee88b7add1d13b6 ""
-  "poster.aux" 1776255031.88056 621 993b98a2858f11c5fab3a279008ae583 "pdflatex"
-  "poster.bbl" 0 -1 0 "bibtex poster"
-  "poster.nav" 1776255031.88118 307 9e520c26371a1250ff9fc1fe87f9c655 "pdflatex"
+  "poster.aux" 1776270126.65267 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "poster.bbl" 1776270134.7568 0 d41d8cd98f00b204e9800998ecf8427e "bibtex poster"
+  "poster.nav" 0 -1 0 "pdflatex"
   "poster.out" 0 -1 0 ""
-  "poster.tex" 1776255033.08893 7503 ee0ee3f52c37067df7c3a88b4b281356 ""
+  "poster.tex" 1776270131.98528 7721 ecddada175a05f966641c06bdae9df18 ""
   (generated)
   "poster.aux"
   "poster.log"

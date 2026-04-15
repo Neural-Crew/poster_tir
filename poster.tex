@@ -162,13 +162,17 @@ Oral TIR 2026 \hfill
   \end{exampleblock}
 
   \begin{alertblock}{Conclusion}
-    Les SLMs de moins de 14 milliards de paramètres ne sont plus de simples démonstrateurs technologiques. Ils s'imposent comme des \textbf{solutions viables, économiques et privées} pour l'intégration de l'IA générative en entreprise.
-    
-    L'innovation se porte désormais sur l'amélioration des algorithmes d'entraînement et la distillation des connaissances depuis des LLMs plus massifs vers ces architectures compactes.
+    Cet état de l'art a démontré que les SLM ne sont pas de simples versions réduites des LLM, 
+    mais des modèles optimisés offrant une efficacité supérieure en VRAM et en consommation de 
+    $CO_2$. L'étude de \cite{yang_qwen3_2025} prouve notamment qu'une architecture intelligente
+    peut diviser par dix le temps de distillation. Nos évaluations, conformes aux standards 
+    du domaine, désignent Phi-4 14B comme le SOTA actuel, bien que Qwen 3.5 9B surclasse ses concurrents
+     sur MMLU-Pro. Ces résultats confirment la valeur ajoutée des SLM et ouvrent la voie à une IA 
+     plus accessible et durable.
   \end{alertblock}
 
   \begin{block}{Références}
-    \nocite{*}
+    \bibliography{references_finales}
     \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
   \end{block}
 
