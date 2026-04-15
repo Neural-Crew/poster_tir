@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex poster"] 1776270134.65685 "poster.aux" "poster.bbl" "poster" 1776270134.7579 2
+["bibtex poster"] 1776270214.34379 "poster.aux" "poster.bbl" "poster" 1776270214.44351 2
   "./poster.bib" 1776270000.09388 70695 941994a9fdd6e4bcf0656a5633468c95 ""
   "/usr/local/texlive/2026/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "poster.aux" 1776270126.65267 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "poster.aux" 1776270206.33962 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "references_finales.bib" 0 -1 0 ""
   (generated)
   "poster.bbl"
   "poster.blg"
   (rewritten before read)
-["pdflatex"] 1776270132.217 "/Users/jimenezalfonso/Documents/Paul_SabatierIII/2eme_Semestre/TIR/poster_tir/poster.tex" "poster.pdf" "poster" 1776270134.54909 2
-  "/Users/jimenezalfonso/Documents/Paul_SabatierIII/2eme_Semestre/TIR/poster_tir/poster.tex" 1776270131.98528 7721 ecddada175a05f966641c06bdae9df18 ""
+["pdflatex"] 1776270183.11927 "/Users/jimenezalfonso/Documents/Paul_SabatierIII/2eme_Semestre/TIR/poster_tir/poster.tex" "poster.pdf" "poster" 1776270185.55885 2
+  "/Users/jimenezalfonso/Documents/Paul_SabatierIII/2eme_Semestre/TIR/poster_tir/poster.tex" 1776270182.73812 7578 c8051122ff40e9585dd9e9980fe4b74d ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -540,17 +540,19 @@
   "c:/Users/titouan/Documents/code/tir/poster.tex" 0 -1 0 ""
   "figures/3D_representation.png" 1776184142.24737 272989 1a75d58312fba2773ec9882d1180f13a ""
   "figures/diag_bench_models.png" 1776184142.24777 43382 7fb1371b8049afc0ade97ca10e9ed079 ""
+  "figures/diagrame_perfmances_parametres.png" 1776270166.63252 149553 570fffa1ab580b7b916f8ec27c694f3e ""
   "figures/results_fig.pdf" 1776184142.24819 53428 ef6735d56cdc87932041add39bba46e8 ""
   "logos/logo_toulouse_rose.png" 1776184142.2498 208569 7f5f7424c4209f3abee88b7add1d13b6 ""
-  "poster.aux" 1776270126.65267 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "poster.bbl" 1776270134.7568 0 d41d8cd98f00b204e9800998ecf8427e "bibtex poster"
+  "poster.aux" 1776270206.33962 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "poster.bbl" 1776270214.44254 0 d41d8cd98f00b204e9800998ecf8427e "bibtex poster"
   "poster.nav" 0 -1 0 "pdflatex"
-  "poster.out" 0 -1 0 ""
-  "poster.tex" 1776270131.98528 7721 ecddada175a05f966641c06bdae9df18 ""
+  "poster.out" 0 -1 0 "pdflatex"
+  "poster.tex" 1776270182.73812 7578 c8051122ff40e9585dd9e9980fe4b74d ""
   (generated)
   "poster.aux"
   "poster.log"
   "poster.nav"
+  "poster.out"
   "poster.pdf"
   "poster.snm"
   "poster.toc"
