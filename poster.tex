@@ -87,32 +87,45 @@ Poster Session \hfill
   \begin{block}{Introduction}
     Les \textbf{Small Language Models (SLMs)} sont des modèles de langage de moins de 14 milliards de paramètres. Si les LLMs (GPT-4, Claude, Gemini) ont redéfini les capacités de l'IA générative, leur déploiement reste conditionné à des clusters GPU haute performance (A100, H100), hors de portée pour la majorité des développeurs.
 
-    Ce travail évalue la viabilité des SLMs comme alternative accessible, en soumettant \textbf{six modèles} à une batterie d'évaluations couvrant \textbf{sept dimensions cognitives}.
+    Ce travail évalue la viabilité des SLMs comme alternative accessible, en soumettant \textbf{six modèles} à une batterie d'évaluations couvrant \textbf{six benchmarks}.
   \end{block}
 
   \begin{block}{Qu'est-ce qu'un paramètre ? Pourquoi 14B ?}
-    Un \textbf{paramètre} est un poids numérique appris à l'entraînement : il encode les associations entre tokens et détermine le comportement du modèle. Plus un modèle en contient, plus il peut capturer de connaissances, au prix d'une VRAM et d'un coût de calcul accrus.
+    Un \textbf{paramètre} est un poids numérique appris pendant l'entraînement qui détermine le comportement du modèle. Plus un modèle en contient, plus il a de connaissances, \textbf{au prix d'un coût de calcul accrus}.
 
-    Le seuil de \textbf{14 milliards de paramètres} est une frontière pratique : un modèle 14B nécessite $\sim$28 Go en FP16, mais seulement $\sim$7 Go en INT4 après quantification (GPTQ/GGUF), le rendant exécutable sur un GPU grand public (RTX 3000/4000, 8–24 Go de VRAM). Au-delà, on entre dans la catégorie des LLMs nécessitant des infrastructures cloud dédiées.
+    Le seuil de \textbf{14 milliards de paramètres} est une frontière pratique : un modèle 14B nécessite entre 7 et 24 Go de VRAM, le rendant exécutable sur un GPU grand public (RTX 3000/4000, 8–24 Go de VRAM). Au-delà, on entre dans la catégorie des LLMs nécessitant des infrastructures cloud dédiées.
   \end{block}
 
-  \begin{block}{Méthodologie}
-    Notre sélection d'articles s'appuie sur la méthode \textbf{PRISMA} pour garantir transparence et reproductibilité :
-    \begin{itemize}
-      \item \textbf{Corpus initial :} 200 articles (2024–2026), issus d'ArXiv, ACL, AAAI, ACM et MDPI.
-      \item \textbf{Filtrage progressif :} 200 $\rightarrow$ 50 (abstracts) $\rightarrow$ 20 articles retenus après lecture complète.
-      \item \textbf{Annotation :} 6 critères — utilité, limites, fiabilité, méthodes, profil auteurs, conclusions.
-      \item \textbf{Méthode Snowball :} 5 articles supplémentaires identifiés via les références des articles sélectionnés.
-    \end{itemize}
-  \end{block}
 
-  \begin{block}{Tendances Actuelles}
-    L'écosystème des SLMs se concentre sur plusieurs axes d'optimisation :
+  \begin{block}{Optimisation des SLMs}
+    Il existe plusieurs stratégies pour compenser la taille réduite des SLMs et maximiser leur performance :
     \begin{itemize}
       \item \textbf{Données synthétiques :} Corpus de haute qualité de type \textit{textbook} (Phi-4) pour compenser la taille réduite.
       \item \textbf{Quantization :} Réduction de la précision des poids (INT4, INT8) permettant l'exécution sur matériel grand public.
-      \item \textbf{Distillation Strong-to-Weak :} Le SLM apprend d'abord à raisonner, puis est aligné sur les logits du modèle enseignant — Qwen démontre que cette méthode nécessite \textbf{10 fois moins de calcul} que le Reinforcement Learning.
-      \item \textbf{Architectures hybrides :} Combinaison Attention + Mixture-of-Experts (MoE) pour maximiser l'efficience paramétrique.
+      \item \textbf{Distillation :} Un grand modèle (enseignant) transfère ses connaissances à un petit modèle (étudiant). Qwen démontre que cette approche nécessite \textbf{10 fois moins de calcul} que le Reinforcement Learning.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Les 6 Catégories de Benchmarks}
+    L'évaluation couvre six dimensions cognitives et fonctionnelles :
+    \begin{enumerate}
+      \item \textbf{Compréhension du langage :} MMLU, connaissances et raisonnement.
+      \item \textbf{Mathématiques :} GSM8K,  résolution de problèmes.
+      \item \textbf{Raisonnement complexe :} BBH, tâches multi-étapescomplexes.
+      \item \textbf{Génération de code :} HumanEval, MBPP, programmation algorithmique.
+      \item \textbf{Connaissances factuelles :} TriviaQA, mémorisation de faits.
+      \item \textbf{Sécurité et alignement :} TruthfulQA, ToxiGen, véracité, toxicité, critères HHH.
+    \end{enumerate}
+  \end{block}
+
+    \begin{block}{Modèles Évalués}
+    \begin{itemize}
+      \item \textbf{Phi-4 14B} (Microsoft), SOTA polyvalent, données synthétiques
+      \item \textbf{Phi-4 mini} (Microsoft), 3,8B, exécutable sur smartphone
+      \item \textbf{Qwen 3 14B} (Alibaba), MoE, fort en raisonnement et code
+      \item \textbf{Qwen 3.5 9B} (Alibaba), architecture hybride, RL à grande échelle
+      \item \textbf{Olmo 3} (Allen AI), open-source, RLVR, transparent
+      \item \textbf{SmolLM3 3B} (HuggingFace), ultra-compact, mode réflexion
     \end{itemize}
   \end{block}
 
@@ -125,29 +138,17 @@ Poster Session \hfill
 % ====================
 \begin{column}{\colwidth}
 
-  \begin{block}{Modèles Évalués}
-    Six modèles de moins de 14B paramètres ont été sélectionnés pour leur diversité architecturale :
-    \begin{enumerate}
-      \item \textbf{Phi-4 14B (Microsoft) :} Données synthétiques, régularité toutes tâches, SOTA polyvalent.
-      \item \textbf{Phi-4 mini (Microsoft) :} 3,8B paramètres, exécutable sur smartphone, mode réflexion.
-      \item \textbf{Qwen 3 14B (Alibaba) :} Architecture MoE, fort en raisonnement et génération de code.
-      \item \textbf{Qwen 3.5 9B (Alibaba) :} Architecture hybride GatedDeltaNet + MoE clairsemé, RL à grande échelle.
-      \item \textbf{Olmo 3 (Allen AI) :} Modèle open-source, optimisation via RLVR, transparence maximale.
-      \item \textbf{SmolLM3 3B (HuggingFace) :} Ultra-compact, GQA + APO, mode réflexion malgré sa taille.
-    \end{enumerate}
+
+
+
+  \begin{block}{Performances Comparées}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.95\textwidth]{figures/diag_bench_models.png}
+      \caption{Scores détaillés par benchmark pour les principaux modèles $\le$ 14B paramètres.}
+    \end{figure}
   \end{block}
 
-  \begin{block}{Les 6 Catégories de Benchmarks}
-    L'évaluation couvre six dimensions cognitives et fonctionnelles :
-    \begin{enumerate}
-      \item \textbf{Compréhension du langage :} MMLU, MMLU-Pro — connaissances générales et raisonnement analytique.
-      \item \textbf{Mathématiques :} GSM8K — résolution de problèmes séquentiels de niveau primaire à compétition.
-      \item \textbf{Raisonnement complexe :} BBH (Big-Bench Hard) — tâches multi-étapes à heuristiques complexes.
-      \item \textbf{Génération de code :} HumanEval, MBPP — exactitude fonctionnelle et programmation algorithmique.
-      \item \textbf{Connaissances factuelles :} TriviaQA, NQ — mémorisation de faits bruts (faiblesse structurelle des SLMs).
-      \item \textbf{Sécurité et alignement :} TruthfulQA, ToxiGen — véracité, toxicité, critères HHH.
-    \end{enumerate}
-  \end{block}
 
   \begin{block}{Résultats}
     \begin{center}
@@ -169,13 +170,15 @@ Poster Session \hfill
     \textbf{Phi-4 14B} s'impose par sa régularité toutes tâches confondues. \textbf{Qwen 3.5 9B} surprend en dominant MMLU-Pro malgré ses 9B paramètres, surclassant des modèles plus massifs grâce à son architecture hybride.
   \end{block}
 
-  \begin{block}{Performances Comparées}
+
+  \begin{block}{Efficacité Paramétrique}
     \begin{figure}
       \centering
-      \includegraphics[width=0.95\textwidth]{figures/diag_bench_models.png}
-      \caption{Scores détaillés par benchmark pour les principaux modèles $\le$ 14B paramètres.}
+      \includegraphics[width=0.95\textwidth]{figures/diagrame_perfmances_parametres.png}
+      \caption{Efficacité Paramétrique : Comparaison avec les Standards de l'Industrie.}
     \end{figure}
   \end{block}
+
 
 \end{column}
 
@@ -186,40 +189,29 @@ Poster Session \hfill
 % ====================
 \begin{column}{\colwidth}
 
-  \begin{block}{Efficacité Paramétrique}
-    \begin{figure}
-      \centering
-      \includegraphics[width=0.95\textwidth]{figures/diagrame_perfmances_parametres.png}
-      \caption{Efficacité Paramétrique : Comparaison avec les Standards de l'Industrie.}
-    \end{figure}
-  \end{block}
-
-  \begin{block}{Défis Restants}
-    Malgré leurs succès, les SLMs font face à plusieurs limitations :
-    \begin{itemize}
-      \item \textbf{Connaissances factuelles limitées :} La taille réduite limite la mémorisation encyclopédique — pallié par RAG.
-      \item \textbf{Hallucinations :} Tendance persistante à générer des informations incorrectes sur des requêtes complexes.
-      \item \textbf{Opacité des évaluations :} Protocoles hétérogènes (température, few-shot vs zero-shot) et évaluations souvent réalisées par les concepteurs eux-mêmes.
-      \item \textbf{Contamination des données :} Risque de chevauchement entre données d'entraînement et benchmarks de test (MMLU, GSM8K), pouvant gonfler artificiellement les scores.
-    \end{itemize}
-  \end{block}
-
-  \begin{exampleblock}{IA Embarquée et Edge Computing}
-    L'un des principaux atouts des SLMs est leur capacité à fonctionner \textbf{localement}, sur des appareils aux ressources limitées (smartphones, PC portables, IoT).
-
     \begin{figure}
       \centering
       \includegraphics[width=0.85\textwidth]{figures/3D_representation.png}
       \caption{Représentation 3D des modèles SLM actuels.}
     \end{figure}
 
-    L'exécution locale garantit la \textbf{confidentialité des données}, réduit la latence et permet un fonctionnement hors-ligne. Le \textit{Retrieval-Augmented Generation (RAG)} pallie le déficit de mémorisation factuelle.
+  \begin{block}{Défis Restants}
+    Malgré leurs succès, les SLMs font face à plusieurs limitations :
+    \begin{itemize}
+      \item \textbf{Connaissances factuelles limitées :} La taille réduite limite la mémorisation encyclopédique, pallié par RAG.
+      \item \textbf{Hallucinations :} Tendance persistante à générer des informations incorrectes sur des requêtes complexes.
+      \item \textbf{Opacité des évaluations :} Protocoles hétérogènes (température, few-shot vs zero-shot) et évaluations souvent réalisées par les concepteurs eux-mêmes.
+    \end{itemize}
+  \end{block}
 
-    L'empreinte carbone est également significativement réduite : $\sim$\textbf{417 tCO$_2$eq} en moyenne pour 15 SLMs open-source, contre $\sim$\textbf{1015 tCO$_2$eq} pour OPT (LLM), soit une réduction de 60\%. Llama-2-7B se distingue comme le modèle le plus énergétiquement efficace parmi les SLMs étudiés.
+  \begin{exampleblock}{IA Embarquée et Edge Computing}
+    L'un des principaux atouts des SLMs est leur capacité à fonctionner \textbf{localement}, sur des appareils aux ressources limitées (smartphones, PC portables, IoT).
+
+    \textbf{Atouts} : Confidentialité, faible latence et fonctionnement hors-ligne sont garantis. Le RAG pallie le déficit de mémorisation. Empreinte carbone réduite de \textbf{60\%} : $\sim$\textbf{417} vs $\sim$\textbf{1015 tCO$_2$eq} pour un LLM comparable. Llama-2-7B est le modèle le plus énergétiquement efficace parmi les SLMs étudiés
   \end{exampleblock}
 
   \begin{alertblock}{Conclusion}
-    Cet état de l'art démontre que les SLMs ne sont pas de simples versions réduites des LLMs, mais des modèles optimisés offrant un meilleur compromis performance/ressource. La distillation Strong-to-Weak (Qwen) divise par dix le temps de calcul face au RL. Nos évaluations désignent \textbf{Phi-4 14B} comme le SOTA actuel toutes tâches confondues, tandis que \textbf{Qwen 3.5 9B} redéfinit l'efficience paramétrique sur les tâches analytiques les plus exigeantes. Ces résultats ouvrent la voie à une IA plus accessible et durable.
+    Les SLMs ne sont pas de simples versions réduites des LLMs : ce sont des modèles efficaces et hautement optimisés. Notre étude désigne \textbf{Phi-4 14B} comme référence polyvalente, tandis que \textbf{Qwen 3.5 9B} démontre qu'un modèle plus petit peut surpasser des modèles plus grands sur les tâches analytiques.
   \end{alertblock}
 
   \begin{block}{Références}
