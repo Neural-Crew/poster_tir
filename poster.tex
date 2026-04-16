@@ -1,5 +1,5 @@
 % Unofficial University of Lethbridge Poster template.
-% A fork of unofficial University of Alberta Poster template: 
+% A fork of unofficial University of Alberta Poster template:
 % which is a fork of Yale template: https://www.overleaf.com/latex/templates/yale-poster-template/rjpgqfgvsjcv
 % which is a fork of the UMich template https://www.overleaf.com/latex/templates/university-of-michigan-umich-poster-template/xpnqzzxwbjzc
 % which is fork of the MSU template https://www.overleaf.com/latex/templates/an-unofficial-poster-template-for-michigan-state-university/wnymbgpxnnwd
@@ -46,7 +46,7 @@
 
 \title{État de l'art des Small Language Models inférieurs à 14 milliards de paramètres}
 
-\author{Your Name}
+\author{Titouan Mokrani, Eliot Goarin, Noah Kalemba, Alfonso Jimenez, Hoang Dang}
 
 \institute[shortinst]{Universitée de Toulouse}
 
@@ -67,7 +67,7 @@ Poster Session \hfill
 % use this to include logos on the left and/or right side of the header:
 % Left: institution
  \logoright{\includegraphics[angle=-90, width=22cm]{logos/logo_toulouse_rose.png}}
-% Right: funding agencies and other affilations 
+% Right: funding agencies and other affilations
 %\logoright{\includegraphics[height=7cm]{logos/NSF.eps}}
 % ====================
 % Body
@@ -75,68 +75,118 @@ Poster Session \hfill
 
 \begin{document}
 
-
-
 \begin{frame}[t]
 \begin{columns}[t]
 \separatorcolumn
 
+% ====================
+% COLONNE 1 — Contexte et cadrage
+% ====================
 \begin{column}{\colwidth}
 
   \begin{block}{Introduction}
-    Les \textbf{Small Language Models (SLMs)}, définis ici comme des modèles de langage possédant moins de 14 milliards de paramètres, représentent une évolution majeure dans le domaine de l'IA générative. 
-    Contrairement à leurs homologues massifs (LLMs), ils offrent un compromis idéal entre \textbf{performances de haut niveau} et \textbf{faible coût computationnel}.
-    
-    Ce poster synthétise l'état de l'art actuel de ces modèles, leurs capacités sur différents benchmarks, et leurs cas d'usage émergents.
+    Les \textbf{Small Language Models (SLMs)} sont des modèles de langage de moins de 14 milliards de paramètres. Si les LLMs (GPT-4, Claude, Gemini) ont redéfini les capacités de l'IA générative, leur déploiement reste conditionné à des clusters GPU haute performance (A100, H100), hors de portée pour la majorité des développeurs.
+
+    Ce travail évalue la viabilité des SLMs comme alternative accessible, en soumettant \textbf{six modèles} à une batterie d'évaluations couvrant \textbf{sept dimensions cognitives}.
+  \end{block}
+
+  \begin{block}{Qu'est-ce qu'un paramètre ? Pourquoi 14B ?}
+    Un \textbf{paramètre} est un poids numérique appris à l'entraînement : il encode les associations entre tokens et détermine le comportement du modèle. Plus un modèle en contient, plus il peut capturer de connaissances, au prix d'une VRAM et d'un coût de calcul accrus.
+
+    Le seuil de \textbf{14 milliards de paramètres} est une frontière pratique : un modèle 14B nécessite $\sim$28 Go en FP16, mais seulement $\sim$7 Go en INT4 après quantification (GPTQ/GGUF), le rendant exécutable sur un GPU grand public (RTX 3000/4000, 8–24 Go de VRAM). Au-delà, on entre dans la catégorie des LLMs nécessitant des infrastructures cloud dédiées.
+  \end{block}
+
+  \begin{block}{Méthodologie}
+    Notre sélection d'articles s'appuie sur la méthode \textbf{PRISMA} pour garantir transparence et reproductibilité :
+    \begin{itemize}
+      \item \textbf{Corpus initial :} 200 articles (2024–2026), issus d'ArXiv, ACL, AAAI, ACM et MDPI.
+      \item \textbf{Filtrage progressif :} 200 $\rightarrow$ 50 (abstracts) $\rightarrow$ 20 articles retenus après lecture complète.
+      \item \textbf{Annotation :} 6 critères — utilité, limites, fiabilité, méthodes, profil auteurs, conclusions.
+      \item \textbf{Méthode Snowball :} 5 articles supplémentaires identifiés via les références des articles sélectionnés.
+    \end{itemize}
   \end{block}
 
   \begin{block}{Tendances Actuelles}
     L'écosystème des SLMs se concentre sur plusieurs axes d'optimisation :
     \begin{itemize}
-      \item \textbf{Données d'entraînement :} Utilisation de corpus hautement qualitatifs (ex: Phi-3 entraîné sur des données textuelles de qualité \textit{textbook}).
-      \item \textbf{Quantization :} Réduction de la précision des poids (4-bit, 8-bit) pour permettre l'exécution sur du matériel grand public.
-      \item \textbf{Spécialisation :} Création de modèles experts sur des tâches précises (code, mathématiques, résumé) plutôt que généralistes.
+      \item \textbf{Données synthétiques :} Corpus de haute qualité de type \textit{textbook} (Phi-4) pour compenser la taille réduite.
+      \item \textbf{Quantization :} Réduction de la précision des poids (INT4, INT8) permettant l'exécution sur matériel grand public.
+      \item \textbf{Distillation Strong-to-Weak :} Le SLM apprend d'abord à raisonner, puis est aligné sur les logits du modèle enseignant — Qwen démontre que cette méthode nécessite \textbf{10 fois moins de calcul} que le Reinforcement Learning.
+      \item \textbf{Architectures hybrides :} Combinaison Attention + Mixture-of-Experts (MoE) pour maximiser l'efficience paramétrique.
     \end{itemize}
-  \end{block}
-
-  \begin{block}{Modèles Phares}
-    Plusieurs familles de modèles dominent actuellement cette catégorie :
-    \begin{enumerate}
-      \item \textbf{Qwen (Alibaba) :} Excellentes performances globales, avec des versions de 0.5B à 14B.
-      \item \textbf{Llama 3 (Meta) :} Le modèle 8B s'impose comme un standard de l'industrie pour sa polyvalence.
-      \item \textbf{Gemma (Google) :} Modèles de 2B et 7B basés sur la technologie Gemini, très performants en raisonnement.
-      \item \textbf{Phi-3 (Microsoft) :} Modèles de 3.8B et 7B optimisés pour le raisonnement logique et mathématique.
-    \end{enumerate}
   \end{block}
 
 \end{column}
 
 \separatorcolumn
 
+% ====================
+% COLONNE 2 — Évaluation
+% ====================
 \begin{column}{\colwidth}
 
+  \begin{block}{Modèles Évalués}
+    Six modèles de moins de 14B paramètres ont été sélectionnés pour leur diversité architecturale :
+    \begin{enumerate}
+      \item \textbf{Phi-4 14B (Microsoft) :} Données synthétiques, régularité toutes tâches, SOTA polyvalent.
+      \item \textbf{Phi-4 mini (Microsoft) :} 3,8B paramètres, exécutable sur smartphone, mode réflexion.
+      \item \textbf{Qwen 3 14B (Alibaba) :} Architecture MoE, fort en raisonnement et génération de code.
+      \item \textbf{Qwen 3.5 9B (Alibaba) :} Architecture hybride GatedDeltaNet + MoE clairsemé, RL à grande échelle.
+      \item \textbf{Olmo 3 (Allen AI) :} Modèle open-source, optimisation via RLVR, transparence maximale.
+      \item \textbf{SmolLM3 3B (HuggingFace) :} Ultra-compact, GQA + APO, mode réflexion malgré sa taille.
+    \end{enumerate}
+  \end{block}
+
+  \begin{block}{Les 6 Catégories de Benchmarks}
+    L'évaluation couvre six dimensions cognitives et fonctionnelles :
+    \begin{enumerate}
+      \item \textbf{Compréhension du langage :} MMLU, MMLU-Pro — connaissances générales et raisonnement analytique.
+      \item \textbf{Mathématiques :} GSM8K — résolution de problèmes séquentiels de niveau primaire à compétition.
+      \item \textbf{Raisonnement complexe :} BBH (Big-Bench Hard) — tâches multi-étapes à heuristiques complexes.
+      \item \textbf{Génération de code :} HumanEval, MBPP — exactitude fonctionnelle et programmation algorithmique.
+      \item \textbf{Connaissances factuelles :} TriviaQA, NQ — mémorisation de faits bruts (faiblesse structurelle des SLMs).
+      \item \textbf{Sécurité et alignement :} TruthfulQA, ToxiGen — véracité, toxicité, critères HHH.
+    \end{enumerate}
+  \end{block}
+
+  \begin{block}{Résultats}
+    \begin{center}
+    \small
+    \begin{tabular}{lcccccc}
+      \toprule
+      \textbf{Modèle} & \textbf{MMLU} & \textbf{GSM8K} & \textbf{MMLU-Pro} & \textbf{BBH} & \textbf{HumanEval} & \textbf{MBPP} \\
+      \midrule
+      Phi-4 14B      & \textbf{84.8} & 80.6          & 71.5             & 55.2         & \textbf{82.6}     & \textbf{76} \\
+      Phi-4 mini     & 67.3          & 88.6          & 52.8             & 70.4         & 74.4              & 65 \\
+      SmolLM3 3B     & 55.7          & 67.6          & 32.7             & —            & 29.4              & 52 \\
+      Olmo 3         & 76.9          & 87.4          & —                & \textbf{86.7}& 49.1              & 60 \\
+      Qwen 3 14B     & 81.1          & \textbf{92.5} & 61.0             & 81.1         & —                 & 73 \\
+      Qwen 3.5 9B    & 78.2          & 85.4          & \textbf{82.5}    & —            & 72.6              & — \\
+      \bottomrule
+    \end{tabular}
+    \end{center}
+    \vspace{0.5em}
+    \textbf{Phi-4 14B} s'impose par sa régularité toutes tâches confondues. \textbf{Qwen 3.5 9B} surprend en dominant MMLU-Pro malgré ses 9B paramètres, surclassant des modèles plus massifs grâce à son architecture hybride.
+  \end{block}
+
   \begin{block}{Performances Comparées}
-    Le graphique ci-dessous illustre les scores détaillés obtenus par différents modèles sur un ensemble de benchmarks standards.
-    
     \begin{figure}
       \centering
       \includegraphics[width=0.95\textwidth]{figures/diag_bench_models.png}
       \caption{Scores détaillés par benchmark pour les principaux modèles $\le$ 14B paramètres.}
     \end{figure}
   \end{block}
-  
-  \begin{block}{Défis Restants}
-    Malgré leurs succès, les SLMs font face à plusieurs limitations :
-    \begin{itemize}
-      \item \textbf{Connaissances factuelles limitées :} La faible capacité de mémorisation réduit l'étendue de leurs connaissances encyclopédiques.
-      \item \textbf{Hallucinations :} Tendance persistante à générer des informations incorrectes sur des requêtes complexes.
-      \item \textbf{Raisonnement multi-sauts :} Difficultés à maintenir la cohérence sur des tâches nécessitant de nombreuses étapes de déduction.
-    \end{itemize}
-  \end{block}
+
+\end{column}
+
+\separatorcolumn
+
+% ====================
+% COLONNE 3 — Applications et conclusions
+% ====================
+\begin{column}{\colwidth}
 
   \begin{block}{Efficacité Paramétrique}
-    Comparaison avec les standards de l'industrie montrant le compromis entre performances et taille du modèle :
-    
     \begin{figure}
       \centering
       \includegraphics[width=0.95\textwidth]{figures/diagrame_perfmances_parametres.png}
@@ -144,32 +194,32 @@ Poster Session \hfill
     \end{figure}
   \end{block}
 
-\end{column}
-
-\separatorcolumn
-
-\begin{column}{\colwidth}
+  \begin{block}{Défis Restants}
+    Malgré leurs succès, les SLMs font face à plusieurs limitations :
+    \begin{itemize}
+      \item \textbf{Connaissances factuelles limitées :} La taille réduite limite la mémorisation encyclopédique — pallié par RAG.
+      \item \textbf{Hallucinations :} Tendance persistante à générer des informations incorrectes sur des requêtes complexes.
+      \item \textbf{Opacité des évaluations :} Protocoles hétérogènes (température, few-shot vs zero-shot) et évaluations souvent réalisées par les concepteurs eux-mêmes.
+      \item \textbf{Contamination des données :} Risque de chevauchement entre données d'entraînement et benchmarks de test (MMLU, GSM8K), pouvant gonfler artificiellement les scores.
+    \end{itemize}
+  \end{block}
 
   \begin{exampleblock}{IA Embarquée et Edge Computing}
-    L'un des principaux atouts des SLMs est leur capacité à fonctionner localement, sur des appareils aux ressources limitées (smartphones, PC portables, IoT).
-    
+    L'un des principaux atouts des SLMs est leur capacité à fonctionner \textbf{localement}, sur des appareils aux ressources limitées (smartphones, PC portables, IoT).
+
     \begin{figure}
       \centering
-      \includegraphics[width=0.9\textwidth]{figures/3D_representation.png}
+      \includegraphics[width=0.85\textwidth]{figures/3D_representation.png}
       \caption{Représentation 3D des modèles SLM actuels.}
     \end{figure}
-    
-    L'exécution locale garantit la \textbf{confidentialité des données}, réduit la latence, et permet un fonctionnement hors-ligne (Edge AI). L'utilisation de \textit{Retrieval-Augmented Generation (RAG)} permet de pallier leur manque de connaissances en les connectant à des bases de données locales sécurisées.
+
+    L'exécution locale garantit la \textbf{confidentialité des données}, réduit la latence et permet un fonctionnement hors-ligne. Le \textit{Retrieval-Augmented Generation (RAG)} pallie le déficit de mémorisation factuelle.
+
+    L'empreinte carbone est également significativement réduite : $\sim$\textbf{417 tCO$_2$eq} en moyenne pour 15 SLMs open-source, contre $\sim$\textbf{1015 tCO$_2$eq} pour OPT (LLM), soit une réduction de 60\%. Llama-2-7B se distingue comme le modèle le plus énergétiquement efficace parmi les SLMs étudiés.
   \end{exampleblock}
 
   \begin{alertblock}{Conclusion}
-    Cet état de l'art a démontré que les SLM ne sont pas de simples versions réduites des LLM, 
-    mais des modèles optimisés offrant une efficacité supérieure en VRAM et en consommation de 
-    $CO_2$. L'étude de \cite{yang_qwen3_2025} prouve notamment qu'une architecture intelligente
-    peut diviser par dix le temps de distillation. Nos évaluations, conformes aux standards 
-    du domaine, désignent Phi-4 14B comme le SOTA actuel, bien que Qwen 3.5 9B surclasse ses concurrents
-     sur MMLU-Pro. Ces résultats confirment la valeur ajoutée des SLM et ouvrent la voie à une IA 
-     plus accessible et durable.
+    Cet état de l'art démontre que les SLMs ne sont pas de simples versions réduites des LLMs, mais des modèles optimisés offrant un meilleur compromis performance/ressource. La distillation Strong-to-Weak (Qwen) divise par dix le temps de calcul face au RL. Nos évaluations désignent \textbf{Phi-4 14B} comme le SOTA actuel toutes tâches confondues, tandis que \textbf{Qwen 3.5 9B} redéfinit l'efficience paramétrique sur les tâches analytiques les plus exigeantes. Ces résultats ouvrent la voie à une IA plus accessible et durable.
   \end{alertblock}
 
   \begin{block}{Références}
