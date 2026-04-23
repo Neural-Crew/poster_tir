@@ -47,17 +47,19 @@
 \title{État de l'art des Small Language Models inférieurs à 14 milliards de paramètres}
 
 \author{Titouan Mokrani, Eliot Goarin, Noah Kalemba, Alfonso Jimenez, Hoang Dang}
-
-\institute[shortinst]{Universitée de Toulouse}
+% Avec l'aide de Thomas Trouvé de chez Neusta France
+\institute[shortinst]{Université de Toulouse \\ \small Avec l'aide de Thomas Trouve de chez Neusta France}
 
 % ====================
 % Footer (optional)
 % ====================
 
-\footercontent{
-  \href{https://github.com}{Github: https://github.com} \hfill
-Poster Session \hfill
-  \href{mailto:youremail@ualberta.ca}{youremail@uleth.ca}}
+\footercontent{%
+  \small
+  [1] Corradini et al. \textit{State of the Art and Future Directions of SLMs.} BDCC, 2025. \quad
+  [2] Thanh Pham et al. \textit{SLM-Bench: A Comprehensive Benchmark of SLMs on Environmental Impacts.} arXiv, 2025. \quad
+  [3] Yang et al. \textit{Qwen3 Technical Report.} arXiv, 2025.
+}
 % (can be left out to remove footer)
 
 % ====================
@@ -67,6 +69,7 @@ Poster Session \hfill
 % use this to include logos on the left and/or right side of the header:
 % Left: institution
  \logoright{\includegraphics[angle=-90, width=22cm]{logos/logo_toulouse_rose.png}}
+ \logoleft{\includegraphics[width=22cm]{logos/neusta_logo.png}}
 % Right: funding agencies and other affilations
 %\logoright{\includegraphics[height=7cm]{logos/NSF.eps}}
 % ====================
@@ -85,49 +88,44 @@ Poster Session \hfill
 \begin{column}{\colwidth}
 
   \begin{block}{Introduction}
-    Les \textbf{Small Language Models (SLMs)} sont des modèles de langage de moins de 14 milliards de paramètres. Si les LLMs (GPT-4, Claude, Gemini) ont redéfini les capacités de l'IA générative, leur déploiement reste conditionné à des clusters GPU haute performance (A100, H100), hors de portée pour la majorité des développeurs.
+    Les \textbf{Small Language Models (SLMs)} sont des modèles de langage dont le nombre de paramètres est inférieur à un certain seuil. Si les LLMs (GPT-4, Claude, Gemini) ont redéfini les capacités de l'IA générative, leur déploiement reste conditionné à des clusters GPU haute performance (A100, H100), hors de portée pour la majorité des développeurs \cite{corradini_state_2025}.
 
-    Ce travail évalue la viabilité des SLMs comme alternative accessible, en soumettant \textbf{six modèles} à une batterie d'évaluations couvrant \textbf{six benchmarks}.
-  \end{block}
+    Ce travail évalue la viabilité des SLMs comme alternative accessible, en soumettant \textbf{six modèles} à une batterie d'évaluations couvrant \textbf{quatre benchmarks}.
 
-  \begin{block}{Qu'est-ce qu'un paramètre ? Pourquoi 14B ?}
-    Un \textbf{paramètre} est un poids numérique appris pendant l'entraînement qui détermine le comportement du modèle. Plus un modèle en contient, plus il a de connaissances, \textbf{au prix d'un coût de calcul accrus}.
-
-    Le seuil de \textbf{14 milliards de paramètres} est une frontière pratique : un modèle 14B nécessite entre 7 et 24 Go de VRAM, le rendant exécutable sur un GPU grand public (RTX 3000/4000, 8–24 Go de VRAM). Au-delà, on entre dans la catégorie des LLMs nécessitant des infrastructures cloud dédiées.
+    Un \textbf{paramètre} est un poids numérique appris à l'entraînement qui détermine le comportement du modèle. Nous fixons le seuil à \textbf{14 milliards de paramètres}, un choix \textit{arbitraire} en l'absence de consensus dans la littérature. Ce choix correspond à la limite pratique d'exécution sur GPU grand public (RTX 3000/4000, 8–24 Go de VRAM).
   \end{block}
 
 
   \begin{block}{Optimisation des SLMs}
     Il existe plusieurs stratégies pour compenser la taille réduite des SLMs et maximiser leur performance :
     \begin{itemize}
-      \item \textbf{Données synthétiques :} Corpus de haute qualité de type \textit{textbook} (Phi-4) pour compenser la taille réduite.
       \item \textbf{Quantization :} Réduction de la précision des poids (INT4, INT8) permettant l'exécution sur matériel grand public.
-      \item \textbf{Distillation :} Un grand modèle (enseignant) transfère ses connaissances à un petit modèle (étudiant). Qwen démontre que cette approche nécessite \textbf{10 fois moins de calcul} que le Reinforcement Learning.
+      \item \textbf{Données synthétiques :} Corpus de haute qualité de type \textit{textbook} (Phi-4) pour compenser la taille réduite.
+      \item \textbf{Distillation :} Un grand modèle (enseignant) transfère ses connaissances à un petit modèle (étudiant). Qwen démontre que cette approche nécessite \textbf{10 fois moins de calcul} que le Reinforcement Learning \cite{yang_qwen3_2025}.
     \end{itemize}
   \end{block}
 
-  \begin{block}{Les 6 Catégories de Benchmarks}
-    L'évaluation couvre six dimensions cognitives et fonctionnelles :
+  \begin{block}{Les 4 Catégories de Benchmarks}
+    L'évaluation couvre quatre dimensions cognitives et fonctionnelles :
     \begin{enumerate}
       \item \textbf{Compréhension du langage :} MMLU, connaissances et raisonnement.
       \item \textbf{Mathématiques :} GSM8K,  résolution de problèmes.
-      \item \textbf{Raisonnement complexe :} BBH, tâches multi-étapescomplexes.
+      \item \textbf{Raisonnement complexe :} BBH, tâches multi-étapes complexes.
       \item \textbf{Génération de code :} HumanEval, MBPP, programmation algorithmique.
-      \item \textbf{Connaissances factuelles :} TriviaQA, mémorisation de faits.
-      \item \textbf{Sécurité et alignement :} TruthfulQA, ToxiGen, véracité, toxicité, critères HHH.
     \end{enumerate}
   \end{block}
 
     \begin{block}{Modèles Évalués}
     \begin{itemize}
       \item \textbf{Phi-4 14B} (Microsoft), SOTA polyvalent, données synthétiques
-      \item \textbf{Phi-4 mini} (Microsoft), 3,8B, exécutable sur smartphone
+      \item \textbf{Phi-4 mini} (Microsoft), 3.8B, exécutable sur smartphone
       \item \textbf{Qwen 3 14B} (Alibaba), MoE, fort en raisonnement et code
       \item \textbf{Qwen 3.5 9B} (Alibaba), architecture hybride, RL à grande échelle
       \item \textbf{Olmo 3} (Allen AI), open-source, RLVR, transparent
       \item \textbf{SmolLM3 3B} (HuggingFace), ultra-compact, mode réflexion
     \end{itemize}
   \end{block}
+
 
 \end{column}
 
@@ -175,7 +173,7 @@ Poster Session \hfill
     \begin{figure}
       \centering
       \includegraphics[width=0.95\textwidth]{figures/diagrame_perfmances_parametres.png}
-      \caption{Efficacité Paramétrique : Comparaison avec les Standards de l'Industrie.}
+      \caption{Efficacité paramétrique des SLMs étudiés comparés à des modèles plus massifs \cite{corradini_state_2025}.}
     \end{figure}
   \end{block}
 
@@ -192,37 +190,35 @@ Poster Session \hfill
     \begin{figure}
       \centering
       \includegraphics[width=0.85\textwidth]{figures/3D_representation.png}
-      \caption{Représentation 3D des modèles SLM actuels.}
+      \caption{Représentation des performances des SLMs étudiés sur 3 benchmarks pertinents.}
     \end{figure}
 
   \begin{block}{Défis Restants}
     Malgré leurs succès, les SLMs font face à plusieurs limitations :
     \begin{itemize}
-      \item \textbf{Connaissances factuelles limitées :} La taille réduite limite la mémorisation encyclopédique, pallié par RAG.
+      \item \textbf{Connaissances factuelles limitées :} La taille réduite limite la mémorisation encyclopédique, que le RAG permet de compenser.
       \item \textbf{Hallucinations :} Tendance persistante à générer des informations incorrectes sur des requêtes complexes.
       \item \textbf{Opacité des évaluations :} Protocoles hétérogènes (température, few-shot vs zero-shot) et évaluations souvent réalisées par les concepteurs eux-mêmes.
     \end{itemize}
   \end{block}
 
-  \begin{exampleblock}{IA Embarquée et Edge Computing}
-    L'un des principaux atouts des SLMs est leur capacité à fonctionner \textbf{localement}, sur des appareils aux ressources limitées (smartphones, PC portables, IoT).
+  \begin{block}{IA Embarquée et Edge Computing}
+    L'un des principaux avantages des SLMs est leur capacité à fonctionner \textbf{localement}, sur des appareils aux ressources limitées (PC portables, IoT).
 
-    \textbf{Atouts} : Confidentialité, faible latence et fonctionnement hors-ligne sont garantis. Le RAG pallie le déficit de mémorisation. Empreinte carbone réduite de \textbf{60\%} : $\sim$\textbf{417} vs $\sim$\textbf{1015 tCO$_2$eq} pour un LLM comparable. Llama-2-7B est le modèle le plus énergétiquement efficace parmi les SLMs étudiés
-  \end{exampleblock}
+    \textbf{Atouts} : Confidentialité, faible latence et fonctionnement hors-ligne sont garantis. Le RAG pallie le déficit de mémorisation. Empreinte carbone structurellement réduite par rapport aux LLMs, bien que les données précises restent limitées \cite{thanh_pham_slm-bench_2025}.
+  \end{block}
 
   \begin{alertblock}{Conclusion}
     Les SLMs ne sont pas de simples versions réduites des LLMs : ce sont des modèles efficaces et hautement optimisés. Notre étude désigne \textbf{Phi-4 14B} comme référence polyvalente, tandis que \textbf{Qwen 3.5 9B} démontre qu'un modèle plus petit peut surpasser des modèles plus grands sur les tâches analytiques.
   \end{alertblock}
 
-  \begin{block}{Références}
-    \bibliography{references_finales}
-    \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
-  \end{block}
+
 
 \end{column}
 
 \separatorcolumn
 \end{columns}
+\setbox0=\vbox{\bibliographystyle{plain}\bibliography{references_finales}}
 \end{frame}
 
 \end{document}

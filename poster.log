@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.4.16)  16 APR 2026 19:54
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.4.16)  18 APR 2026 21:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1247,29 +1247,31 @@ Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
 \colwidth=\skip88
 File: logos/logo_toulouse_rose.png Graphic file (type bmp)
 <logos/logo_toulouse_rose.png>
+File: logos/neusta_logo.png Graphic file (type bmp)
+<logos/neusta_logo.png>
  (poster.aux)
 \openout1 = `poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1305,7 +1307,7 @@ LaTeX Font Info:    ... okay on input line 76.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 76.
+Package hyperref Info: Link coloring OFF on input line 79.
 (poster.out) (poster.out)
 \@outlinefile=\write5
 \openout5 = `poster.out'.
@@ -1339,56 +1341,52 @@ Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.14).
 
 (poster.nav)
+LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <24.89> not available
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 79.
+File: logos/neusta_logo.png Graphic file (type bmp)
+<logos/neusta_logo.png>
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-6.
+9.
 
 (C:\Users\eliot\AppData\Local\Programs\MiKTeX3\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-6.
+9.
 
 (C:\Users\eliot\AppData\Local\Programs\MiKTeX3\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-76.
+79.
 
 (C:\Users\eliot\AppData\Local\Programs\MiKTeX3\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `cmex7' loaded for size
-(Font)              <7> on input line 76.
+(Font)              <7> on input line 79.
 File: logos/logo_toulouse_rose.png Graphic file (type bmp)
 <logos/logo_toulouse_rose.png>
+File: logos/neusta_logo.png Graphic file (type bmp)
+<logos/neusta_logo.png>
 File: logos/logo_toulouse_rose.png Graphic file (type bmp)
 <logos/logo_toulouse_rose.png>
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <29.86> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 226.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 222.
 File: figures/diag_bench_models.png Graphic file (type bmp)
 <figures/diag_bench_models.png>
-LaTeX Font Info:    Calculating math sizes for size <24.89> on input line 226.
+LaTeX Font Info:    Calculating math sizes for size <24.89> on input line 222.
 File: figures/diagrame_perfmances_parametres.png Graphic file (type bmp)
 <figures/diagrame_perfmances_parametres.png>
 File: figures/3D_representation.png Graphic file (type bmp)
 <figures/3D_representation.png>
-LaTeX Font Info:    Calculating math sizes for size <29.86> on input line 226.
 
-(poster.bbl
-
-LaTeX Warning: Empty `thebibliography' environment on input line 3.
-
-) (poster.bbl
-
-LaTeX Warning: Empty `thebibliography' environment on input line 3.
-
-)
-Overfull \vbox (68.12602pt too high) detected at line 226
- []
-
+(poster.bbl)
+File: logos/neusta_logo.png Graphic file (type bmp)
+<logos/neusta_logo.png>
 File: logos/logo_toulouse_rose.png Graphic file (type bmp)
 <logos/logo_toulouse_rose.png>
-[1
+ [1
 
 ]
 \tf@nav=\write6
@@ -1409,12 +1407,12 @@ Package rerunfilecheck Info: File `poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 38233 strings out of 402987
- 924649 string characters out of 5448317
- 1584147 words of memory out of 5000000
- 66251 multiletter control sequences out of 15000+600000
- 668977 words of font info for 110 fonts, out of 8000000 for 9000
+ 38240 strings out of 402987
+ 925343 string characters out of 5448317
+ 1579147 words of memory out of 5000000
+ 66259 multiletter control sequences out of 15000+600000
+ 656224 words of font info for 92 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 128i,19n,123p,729b,965s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,19n,123p,729b,964s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on poster.pdf (1 page).
