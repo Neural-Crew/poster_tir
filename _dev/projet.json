@@ -5,17 +5,10 @@
   "stack": "latex",
   "prefixeEcopilot": null,
   "branches": {
-    "reference": "VAL",
-    "environnements": [
-      "INT",
-      "VAL",
-      "PROD"
-    ],
+    "reference": null,
+    "environnements": null,
     "protegees": [
-      "main",
-      "INT",
-      "VAL",
-      "PROD"
+      "main"
     ]
   },
   "ports": {
@@ -26,9 +19,9 @@
   },
   "commandes": {
     "installer": null,
-    "verifier": null,
+    "verifier": "node {outils}/verifier-tout.js",
     "tester": null,
-    "construire": "latexmk -pdf poster.tex",
+    "construire": null,
     "lancer": null,
     "deployer": {
       "INT": null,
@@ -48,15 +41,38 @@
     "format": null
   },
   "code": {
-    "racines": null,
-    "syntaxe": null,
+    "racines": [
+      "poster.tex",
+      "figures",
+      "logos"
+    ],
+    "syntaxe": [
+      "poster.tex"
+    ],
     "prefixesDoc": [
       "_dev",
       "figures",
       "logos"
     ],
-    "generes": null,
-    "zoneCommit": null
+    "generes": [
+      "poster.pdf",
+      "poster.aux",
+      "poster.bbl",
+      "poster.blg",
+      "poster.fdb_latexmk",
+      "poster.log",
+      "poster.nav",
+      "poster.out",
+      "poster.snm",
+      "poster.toc"
+    ],
+    "zoneCommit": [
+      "poster.tex",
+      "references_finales.bib",
+      "figures",
+      "logos",
+      "_dev"
+    ]
   },
   "registres": {
     "bugs": null,
@@ -79,6 +95,9 @@
   "reviewer": {
     "criteres": null
   },
-  "risques": [],
+  "risques": [
+    "éditer ou supprimer references_finales.bib : c'est la seule bibliographie lue par poster.tex",
+    "commiter poster.pdf et les fichiers de build (.aux, .log, .fdb_latexmk…) sans avoir recompilé avec xelatex"
+  ],
   "modeles": {}
 }
