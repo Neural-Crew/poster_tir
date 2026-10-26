@@ -1,0 +1,84 @@
+{
+  "$comment": "Description d'un projet pour le socle. Copié en _dev/projet.json par outils/installer.js, puis ajusté à la main. Toute clé absente = étape sautée, jamais devinée.",
+  "socleVersion": "1",
+  "nom": "poster_tir",
+  "stack": "latex",
+  "prefixeEcopilot": null,
+  "branches": {
+    "reference": "VAL",
+    "environnements": [
+      "INT",
+      "VAL",
+      "PROD"
+    ],
+    "protegees": [
+      "main",
+      "INT",
+      "VAL",
+      "PROD"
+    ]
+  },
+  "ports": {
+    "front": null,
+    "api": null,
+    "cdp": null,
+    "cockpit": null
+  },
+  "commandes": {
+    "installer": null,
+    "verifier": null,
+    "tester": null,
+    "construire": "latexmk -pdf poster.tex",
+    "lancer": null,
+    "deployer": {
+      "INT": null,
+      "VAL": null,
+      "PROD": null
+    }
+  },
+  "recette": {
+    "mode": null,
+    "lancer": null,
+    "demander": null,
+    "suites": null,
+    "api": null
+  },
+  "version": {
+    "fichier": null,
+    "format": null
+  },
+  "code": {
+    "racines": null,
+    "syntaxe": null,
+    "prefixesDoc": [
+      "_dev",
+      "figures",
+      "logos"
+    ],
+    "generes": null,
+    "zoneCommit": null
+  },
+  "registres": {
+    "bugs": null,
+    "codeMort": null,
+    "go": null,
+    "questions": null,
+    "chantiers": null
+  },
+  "sorties": "_dev/sorties",
+  "roles": {
+    "orchestre": "orchestre-poster_tir",
+    "ouvriere": "ouvriere-poster_tir",
+    "complement": null
+  },
+  "uat": {
+    "source": null,
+    "scenarios": null,
+    "compteTest": null
+  },
+  "reviewer": {
+    "criteres": null
+  },
+  "risques": [],
+  "modeles": {}
+}
